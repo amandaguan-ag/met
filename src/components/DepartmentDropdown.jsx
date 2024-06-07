@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { fetchDepartments } from "../api/metAPI";
-import "../css/DepartmentDropdown.css";
 
 function DepartmentDropdown({ onChange }) {
   const [departments, setDepartments] = useState([]);
@@ -20,18 +19,22 @@ function DepartmentDropdown({ onChange }) {
   };
 
   return (
-    <div className="dropdown toggle">
-      <input
-        id="departmentToggle"
-        type="checkbox"
-        checked={isOpen}
-        onChange={handleToggle}
-      />
-      <label htmlFor="departmentToggle">Select a Department</label>
-      <ul>
+    <div className="dropdown">
+      <button
+        className="btn btn-dark dropdown-toggle"
+        type="button"
+        id="departmentDropdown"
+        data-bs-toggle="dropdown"
+        aria-expanded={isOpen}
+        onClick={handleToggle}
+      >
+        Select a Department
+      </button>
+      <ul className={`dropdown-menu ${isOpen ? "show" : ""}`}>
         {departments.map((dept) => (
           <li key={dept.departmentId}>
             <a
+              className="dropdown-item"
               href="#"
               onClick={() => handleDepartmentClick(dept.departmentId)}
             >
