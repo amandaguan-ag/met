@@ -101,4 +101,3 @@ Please note that the Met Museum Collection API has certain usage limits and requ
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
-```
