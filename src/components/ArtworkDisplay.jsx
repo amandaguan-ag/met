@@ -1,7 +1,11 @@
 function ArtworkDisplay({ artworks }) {
+  const sortedArtworks = [...artworks].sort(
+    (a, b) => a.objectBeginDate - b.objectBeginDate
+  );
+
   return (
     <div>
-      {artworks.map((art) => (
+      {sortedArtworks.map((art) => (
         <div key={art.objectID}>
           <h3>{art.title}</h3>
           <p>{art.artistDisplayName || "Unknown Artist"}</p>
