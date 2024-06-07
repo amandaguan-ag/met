@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { fetchDepartments } from "../api/metAPI";
 
-function DepartmentDropdown({ onChange }) {
+function DepartmentDropdown({ onChange, selectedDepartment }) {
   const [departments, setDepartments] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -18,6 +18,13 @@ function DepartmentDropdown({ onChange }) {
     setIsOpen(false);
   };
 
+  const getSelectedDepartmentName = () => {
+    const selectedDept = departments.find(
+      (dept) => dept.departmentId === selectedDepartment
+    );
+    return selectedDept ? selectedDept.displayName : "Select a Department";
+  };
+
   return (
     <div className="dropdown">
       <button
@@ -28,7 +35,7 @@ function DepartmentDropdown({ onChange }) {
         aria-expanded={isOpen}
         onClick={handleToggle}
       >
-        Select a Department
+        {getSelectedDepartmentName()}
       </button>
       <ul className={`dropdown-menu ${isOpen ? "show" : ""}`}>
         {departments.map((dept) => (

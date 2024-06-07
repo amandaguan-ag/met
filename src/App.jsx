@@ -31,7 +31,10 @@ function App() {
   return (
     <>
       <h1>Explore Artworks at the Met Museum</h1>
-      <DepartmentDropdown onChange={handleDepartmentChange} />
+      <DepartmentDropdown
+        onChange={handleDepartmentChange}
+        selectedDepartment={selectedDepartment}
+      />
       <ArtworkDisplay artworks={artworks} />
     </>
   );
