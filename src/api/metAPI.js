@@ -14,16 +14,18 @@ export async function fetchArtworks(departmentId) {
   const data = await response.json();
   console.log("Object IDs fetched:", data.objectIDs);
 
-  const allDetails = await Promise.all(data.objectIDs.map(fetchArtworkDetails));
+  const shuffledIDs = shuffleArray([...data.objectIDs]);
+  const selectedIDs = shuffledIDs.slice(0, 5);
 
-  const validArtworks = allDetails.filter(
+  const artworkDetailsPromises = selectedIDs.map(fetchArtworkDetails);
+  const artworkDetails = await Promise.all(artworkDetailsPromises);
+
+  const validArtworks = artworkDetails.filter(
     (art) => art && art.primaryImageSmall && art.isHighlight
   );
   console.log("Details of artworks fetched:", validArtworks);
 
-  shuffleArray(validArtworks);
-
-  return validArtworks.slice(0, 5);
+  return validArtworks;
 }
 
 function shuffleArray(array) {
@@ -31,13 +33,14 @@ function shuffleArray(array) {
     const j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];
   }
+  return array;
 }
 
 export async function fetchArtworkDetails(objectID) {
   const response = await fetch(
     `https://collectionapi.metmuseum.org/public/collection/v1/objects/${objectID}`
   );
-  if (!response.ok) return null; 
+  if (!response.ok) return null;
   const data = await response.json();
   return data;
 }
