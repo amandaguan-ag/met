@@ -3,6 +3,8 @@ import "./App.css";
 import DepartmentDropdown from "./components/DepartmentDropdown";
 import { fetchDepartments, fetchArtworks } from "./api/metAPI";
 import ArtworkDisplay from "./components/ArtworkDisplay";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 function App() {
   const [departments, setDepartments] = useState([]);
