@@ -1,10 +1,15 @@
-function ArtworkDisplay({ artworks }) {
+function ArtworkDisplay({ artworks, onShuffle }) {
   const sortedArtworks = [...artworks].sort(
     (a, b) => a.objectBeginDate - b.objectBeginDate
   );
 
   return (
     <div className="container">
+      <div className="mb-3 mt-4">
+        <button className="btn btn-dark" onClick={onShuffle}>
+          Shuffle Artworks
+        </button>
+      </div>
       <div className="row">
         {sortedArtworks.map((art) => (
           <div key={art.objectID} className="col-md-4 mb-4">

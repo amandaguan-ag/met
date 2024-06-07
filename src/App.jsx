@@ -28,6 +28,12 @@ function App() {
     setArtworks(arts);
   };
 
+  const handleShuffle = async () => {
+    const arts = await fetchArtworks(selectedDepartment);
+    console.log("Artworks shuffled:", arts);
+    setArtworks(arts);
+  };
+
   return (
     <>
       <h1>Explore Artworks at the Met Museum</h1>
@@ -35,7 +41,7 @@ function App() {
         onChange={handleDepartmentChange}
         selectedDepartment={selectedDepartment}
       />
-      <ArtworkDisplay artworks={artworks} />
+      <ArtworkDisplay artworks={artworks} onShuffle={handleShuffle} />
     </>
   );
 }
