@@ -5,7 +5,11 @@ function ArtworkDisplay({ artworks }) {
         <div key={art.objectID}>
           <h3>{art.title}</h3>
           <p>{art.artistDisplayName || "Unknown Artist"}</p>
-          <img src={art.primaryImageSmall} alt={art.title} />
+          <img
+            src={art.primaryImageSmall}
+            alt={art.title}
+            style={{ width: "200px", height: "auto" }}
+          />
           <p>Year: {art.objectBeginDate}</p>
           <a
             href={`https://www.metmuseum.org/art/collection/search/${art.objectID}`}
