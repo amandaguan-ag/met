@@ -73,9 +73,9 @@ met-museum-artwork-explorer/
 - The `src/` directory contains the application source code.
   - The `api/` directory contains the `metAPI.js` file, which handles API requests to the Met Museum Collection API.
   - The `components/` directory contains reusable components used in the application.
-    - `ArtistWorks.js`: Displays a random selection of highlighted works by a specific artist.
-    - `ArtworkDisplay.js`: Renders the artwork cards and handles shuffling of artworks.
-    - `DepartmentDropdown.js`: Provides a dropdown menu to select a department.
+    - `ArtistWorks.jsx`: Displays a random selection of highlighted works by a specific artist.
+    - `ArtworkDisplay.jsx`: Renders the artwork cards and handles shuffling of artworks.
+    - `DepartmentDropdown.js `: Provides a dropdown menu to select a department.
   - `App.css`: Contains custom styles for the application.
   - `App.jsx`: The main component that brings together all the components and handles the application logic.
   - `index.js`: The entry point of the application.
