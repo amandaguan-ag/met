@@ -10,27 +10,29 @@ function ArtworkDisplay({ artworks, onShuffle }) {
           Shuffle Artworks
         </button>
       </div>
-      <div className="row">
+      <div className="row row-cols-1 row-cols-md-3 g-4">
         {sortedArtworks.map((art) => (
-          <div key={art.objectID} className="col-md-4 mb-4">
-            <div className="card bg-white text-dark">
+          <div key={art.objectID} className="col">
+            <div className="card h-100 bg-white text-dark">
               <img
                 src={art.primaryImageSmall}
                 alt={art.title}
                 className="card-img-top"
               />
-              <div className="card-body">
+              <div className="card-body d-flex flex-column">
                 <h5 className="card-title">{art.title}</h5>
                 <p className="card-text">
                   {art.artistDisplayName || "Unknown Artist"}
                 </p>
                 <p className="card-text">Year: {art.objectBeginDate}</p>
-                <a
-                  href={`https://www.metmuseum.org/art/collection/search/${art.objectID}`}
-                  className="btn btn-dark"
-                >
-                  View More
-                </a>
+                <div className="mt-auto">
+                  <a
+                    href={`https://www.metmuseum.org/art/collection/search/${art.objectID}`}
+                    className="btn btn-dark"
+                  >
+                    View More
+                  </a>
+                </div>
               </div>
             </div>
           </div>
